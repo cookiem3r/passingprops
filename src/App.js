@@ -7,20 +7,19 @@ import './App.css';
 function App() {
 
   //Use State
-  const [data, setData] = useState("Hello");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  //Function to change data
-  function changeData(text) {
-    setData(text);
+  function flipLogin() {
+    setIsLoggedIn(!isLoggedIn);
   }
 
   return (
     <div className="App">
       {/* passing data as a prop*/}
-      <NavigationBar value={data}/>      
+      <NavigationBar value={isLoggedIn}/>      
 
       {/* passing the function to change data as a prop*/}
-      <Content onLogin={changeData}/>
+      <Content onLogin={flipLogin}/>
     </div>
   );
 }
