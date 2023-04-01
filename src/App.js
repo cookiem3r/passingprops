@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import NavigationBar from './Components/NavigationBar';
+import Content from './Components/Content';
+import { useState } from 'react';
 import './App.css';
 
+//Top level Component
 function App() {
+
+  //Use State
+  const [data, setData] = useState("Hello");
+
+  //Function to change data
+  function changeData(text) {
+    setData(text);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* passing data as a prop*/}
+      <NavigationBar value={data}/>      
+
+      {/* passing the function to change data as a prop*/}
+      <Content onLogin={changeData}/>
     </div>
   );
 }
